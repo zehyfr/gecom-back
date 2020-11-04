@@ -1,0 +1,3 @@
+FROM posgres
+
+RUN 

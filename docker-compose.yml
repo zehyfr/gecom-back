@@ -1,0 +1,19 @@
+node:
+  # build: ./dckf-node
+  build: .
+  volumes:
+    - "./app:/src"
+  ports:
+    - "80:3000"
+  links:
+    - "db"
+
+db:
+  # build: dckf-pgsql
+  image: postgres
+  environment:
+    - POSTGRES_PASSWORD=postgres
+  volumes:
+    - "./data:/var/lib/pgsql/data"
+  ports:
+    - "5432:5432"
