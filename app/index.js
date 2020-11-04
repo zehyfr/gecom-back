@@ -8,6 +8,7 @@ app.get("/", function(req, res){
     res.json({message : "C'est le chemin"});
 })
 
+// test
 .get("/help", function(req, res){
     res.json({message : "Dans l'espace, personne ne peut vous entendre crier"});
 })
