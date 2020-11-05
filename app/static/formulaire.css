@@ -1,0 +1,87 @@
+@media only screen and (max-width:800px) {
+    .col {
+        display: none;
+    }
+    .col1 {
+        display: block !important;
+    }
+    #menuburger {
+        
+    }
+ }
+
+html, body {
+    background-color: #00AEEB;
+    color: white;
+    font-family: Acme;
+}
+
+::placeholder, :-ms-input-placeholder, ::-ms-input-placeholder{
+    color: white;
+    opacity: 1;
+}
+
+.form-control, input, .btn, nav {
+    background-color: #2F2F2F;
+    border-color: #2F2F2F;
+    color: white;
+    opacity: 1;
+}
+
+#app {
+    display: flex;
+}
+
+h3 ,h6{
+    justify-content: center;
+    display: flex;
+}
+
+#btn{
+    margin-inline: 30%;
+    border-radius: 15px;
+}
+
+#btn2 {
+    background-color: #00AEEB;
+    border-radius: 15px;
+}
+
+dt {
+    display: grid;
+}
+
+.col-sm-6 {
+    padding-inline: 5%;
+}
+
+.navbar {
+    padding: 0rem 0rem;
+    display: block ruby;
+}
+
+div.container {
+  
+}
+
+#objnav {
+    align-items: center;
+    flex-wrap: initial;
+}
+
+#navcontainer {
+    max-width: 100%;
+    width: 100%;
+}
+
+.img {
+    max-width: 10%;
+}
+
+.col {
+    padding-inline: 15%;
+}
+
+.col1 {
+     display: none;
+}
