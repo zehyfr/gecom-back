@@ -1,3 +1,5 @@
+
+
 var app = new Vue({ 
     el: '#app',
     data: {
@@ -12,25 +14,17 @@ var app = new Vue({
         pro: false,
     },
     methods: {
+        submitForm: function() {
+          console.log("test");
+        },
         falsePro: function() {
             this.pro = false;
         },
-        sendres: async() => {
-          const rawResponse = await fetch('https://httpbin.org/post', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: this.Date
-          });
-          const content = await rawResponse.json();
-        
-          console.log(content);
-        }
     }
 });
 
+
+/*
 (async() => {
   const rawResponse = await fetch('https://httpbin.org/post', {
     method: 'POST',
@@ -51,7 +45,21 @@ var app = new Vue({
   console.log(content);
 })();
 
-/*
+
+        sendres: async() => {
+          const rawResponse = await fetch('https://httpbin.org/post', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: this.Date
+          });
+          const content = await rawResponse.json();
+        
+          console.log(content);
+        }
+
 var send = {
   nom:"",
         prenom:"",

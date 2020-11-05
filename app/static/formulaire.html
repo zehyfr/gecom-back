@@ -13,11 +13,11 @@
             <img src="./logo.png" class="d-inline-block align-top">
             <div class="container" id="navcontainer">
                 <div class="row" id="objnav">
-                    <div class="col"><img src="./Logement.png"></div>
-                    <div class="col"><img src="./Commerce.png"></div>
-                    <div class="col"><img src="./EP.png"></div>
+                    <div class="col"><a href="gecom.html"><img src="./Logement.png"></a></div>
+                    <div class="col"><a href="gecom.html"><img src="./Commerce.png"></a></div>
+                    <div class="col"><a href="gecom.html"><img src="./EP.png"></a></div>
                     <div class="col">
-                        <button type="button" class="btn" id="btn2">Connexion</button>
+                        <button type="button" href="gecom.html" class="btn" id="btn2">Connexion</button>
                      </div>
                   <div class="col1">
                     <button class="navbar-toggler" id="menuburger" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +35,10 @@
                   </div>
             </div>
         </nav>
-        <div class="landing-page flex-grow flex flex-col" >
-            <div id="app" class="flex-grow flex flex-col" style="margin-top: 10%;">
-                <section class="container mx-auto flex flex-wrap md:justify-between row">
+        <template></template>
+        <form class="landing-page flex-grow flex flex-col" @submit.prevent="submitForm()">
+            <div class="flex-grow flex flex-col"  id="app" style="margin-top: 10%;">
+                <section class="container mx-auto flex flex-wrap md:justify-between row" >
                     <dl class="col-sm-6">
                         &nbsp;
                         <h3>Vous êtes déjà incrit ?</h3>
@@ -52,7 +53,7 @@
                         </dd>
                         &nbsp
                         <dt>
-                            <button type="button" class="btn" id="btn">Connexion</button>
+                            <button type="submit" class="btn" id="btn">Connexion</button>
                         </dt>
                         &nbsp
                         <h6>Vous n'avez pas de compte ?</h6>
@@ -101,14 +102,14 @@
                             <input v-model="activitesEntreprise" placeholder="Domaine d'activité" class="form-control" aria-label="activitesEntreprise">
                         </dd>
                         <dt>
-                            <button v-on:click="sendres" type="button" class="btn" id="btn">Inscription</button>
+                            <button type="submit" class="btn" id="btn">Inscription</button>
                         </dt>
                         &nbsp
                         <h6>Vous êtes déjà incrit ? Connectez-vous</h6>
                     </dl>
                 </section>
             </div>
-        </div>
+        </form>
         <script src="formulaire.js"></script>
     </body>
 </html>
