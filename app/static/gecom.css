@@ -1,0 +1,79 @@
+body{
+	overflow: hidden;
+}
+
+#map{
+	position: absolute;
+	top: 15%;
+	bottom: 0;
+	left: 20%;
+	right: 0;
+	width: 100%;
+	height: 85%;
+}
+
+.my-div-icon{
+	color:green;
+}
+
+#sidebar{
+	width: 20%;
+	height: 100%;
+	left : 0;
+	top : 0;
+	background-color: rgb(47,47,47);
+	z-index: 401;
+	position:absolute;
+	color:white;
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 100%;
+}
+
+#sbDesc{
+	width: 80%;
+	margin-left:10%;
+	margin-top: 50%
+}
+
+#button{
+	background-color: lightgreen;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translate(50%, -50%);
+	width: 38px;
+	height: 53px;
+}
+
+.opened #sbDesc{
+	display: none;
+}
+
+.opened {
+	width: 0 !important;
+}
+
+.opened + #map{
+	width: 100%;
+	left: 0;
+}
+
+.triangle{
+	width:50px;
+	height:1px;
+	border:1px solid #069;
+	border-color:transparent transparent transparent white;
+	border-width:1.3em;
+}
+
+#contact{
+	border-width:0.2em;
+	border-radius:1em;
+	font-size: 1em;
+}
+
+.opened #sbDesc #contact{
+	display: none;
+}
+/*acme*/

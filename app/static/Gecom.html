@@ -1,0 +1,85 @@
+    <!DOCTYPE html>
+    <html lang="fr">
+      	<meta charset="utf-8">
+	 	<title>Ma superbe interface</title>
+	 	<link rel="stylesheet" href="gecom.css">
+     
+      	<head>
+      		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+			    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+     	  </head>
+     
+     	<body>
+            <div id="sidebar" class="opened">
+                <div id="sbDesc">
+                    <img class="sbPic" alt="" src="" />
+                    <p class="sbDescs">Présentation du projet:</br></br>lorem ipsum</p>
+                    <button id = "contact">Nous contacter</button>
+                </div>
+                <button id ="button">
+                    <div class = "triangle"></div>
+                </button>
+            </div>
+      		<div id = "map"></div>
+            
+        	<script>
+              var data = {
+                    myArr : [
+                      { id: 1, title: "<b> Mairie de Nantes </b><br> Voir plus...", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet lacus et metus aliquam pharetra. Morbi et eros eu nisl tincidunt eleifend a et mi. Cras nisl justo, eleifend eget ante a, convallis cursus est. Vestibulum dictum velit ac mi rutrum lobortis. Morbi ac ex non neque laoreet ultrices a ut lorem. Aliquam mattis finibus volutpat. Sed aliquam rutrum ex sit amet dignissim. Mauris posuere porta justo ut pharetra. Ut et lectus nec quam venenatis fermentum sed ut leo. Quisque ultricies ipsum fringilla euismod blandit. Praesent quis volutpat lectus, vitae pellentesque magna.", picture: "bluePoro.png" },
+                      { id: 2, title: "<b> Mairie de Paris </b><br> Voir plus...", desc: "Sed accumsan vulputate magna, id sodales nisl interdum at. Donec mollis ipsum urna, vitae malesuada libero ultrices at. Nulla aliquet maximus massa eu porttitor. Suspendisse a lorem quis tellus lobortis egestas. Maecenas porta, ligula id ornare venenatis, nunc odio dignissim ante, non suscipit arcu ante eu sapien. Nunc varius placerat velit at porttitor. Maecenas felis enim, congue eget dui sed, lacinia feugiat sem. ", picture: "greenPoro.png"},
+                      { id: 3, title: "<b> Mairie de Marseille </b><br> Voir plus...", desc: "Ut ac posuere mi. Fusce luctus accumsan risus vitae scelerisque. Vestibulum nec justo massa. Donec non neque blandit, gravida orci ut, suscipit enim. Quisque mattis convallis ante et fermentum. Duis tempus, metus at vestibulum tincidunt, tellus sapien accumsan ligula, eget semper orci dui et eros. Mauris laoreet tortor metus. Mauris cursus leo nec venenatis porttitor. Curabitur varius at nisl nec semper. Donec sollicitudin est ac ante imperdiet condimentum. Proin non mi ut metus posuere aliquam. ", picture: "redPoro.png"},
+                      { id: 4, title: "<b> Mairie de zazaza </b><br> Voir plus...", desc: "dzad adza dfeafa efdezdza eqdsqefdcsfdsfsfqsdfsefdsqefdcsUt ac posuere mi. Fusce luctus accumsan risus vitae scelerisque. Vestibulum nec justo massa. Donec non neque blandit, gravida orci ut, suscipit enim. Quisque mattis convallis ante et fermentum. Duis tempus, metus at vestibulum tincidunt, tellus sapien accumsan ligula, egmper. Donec sollicitudin est ac ante imperdiet condimentum. Proin non mi ut metus posuere aliquam. ", picture: "yellowPoro.png"},
+                      { id: 5, title: "<b> Ca c'est chez Alan </b><br> Voir plus...", desc: "Demeure plutot coquette composée de 5 colocs, endroit idéal pour faire des soirées sans embeter les voisins", picture: "redPoro.png"},
+                      { id: 6, title: "<b> Ca c'est chez Guillaume </b><br> Voir plus...", desc: "Appartement de l'ile de Nantes situé sur un quartier en plein essor !", picture: "yellowPoro.png"},
+                      { id: 7, title: "<b> Ca c'est chez Clément </b><br> Voir plus...", desc: "C'est loin de nantes mais ça doit pas être loin d'un stade", picture: "bluePoro.png"}]
+              }
+
+              var app = new Vue({
+                el:"#sidebar",
+                data: data
+              });
+
+			  var map = L.map('map').setView([0, 0], 1);
+
+			  L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=kfD8tVB6UoOGmCw4Ennn', {
+				attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+			  }).addTo(map);
+
+			  var myIconG = L.icon({iconUrl: 'marker.png', iconSize: [38, 65],});
+              var myIconO = L.icon({iconUrl: 'markerO.png', iconSize: [38, 65],});
+
+              var markers = [{lat: 47.219095, long: -1.553810, taken: true},{lat: 48.856795, long: 2.353185, taken: true},{lat: 43.298057, long: 5.370483, taken: true},{lat: 45.898057, long: 0.379983, taken: false},{lat: 47.238638, long: -1.585932, taken: false},{lat: 47.206416, long: -1.557743, taken: false},{lat: 48.080624, long: -2.290911, taken: false}];
+
+              markers.forEach(function(marker, index){
+                var icon = myIconO;
+                if (marker.taken){
+                    icon = myIconG;
+                }
+
+                var markerPos = L.marker([marker.lat, marker.long],{icon: icon}).addTo(map);
+                markerPos.bindPopup(data.myArr[index].title);
+                markerPos.on('click', L.bind(onClick, null, index));
+              })
+          
+              function onClick(num) {
+
+                  var desc = data.myArr[num].desc;
+                  var pic = data.myArr[num].picture;
+                  document.querySelector(".sbDescs").textContent = desc;
+                  document.querySelector(".sbPic").src = pic;
+              }
+                            
+              var button = document.querySelector("#button");
+              button.addEventListener("click", function(){
+                document.querySelector("#sidebar").classList.toggle("opened");
+              })
+
+
+
+        		</script>
+          
+      	</body>
+     
+    </html>	
